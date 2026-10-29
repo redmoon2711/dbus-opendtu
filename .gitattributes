@@ -1,0 +1,7 @@
+# The scripts run on Linux (Venus OS): always LF line endings, also when checked out on Windows
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+service/run text eol=lf
+service/log/run text eol=lf
+config.example text eol=lf

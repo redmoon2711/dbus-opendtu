@@ -1,0 +1,6 @@
+# your own settings stay on the device / on your computer
+config.ini
+
+__pycache__/
+*.pyc
+current.log*

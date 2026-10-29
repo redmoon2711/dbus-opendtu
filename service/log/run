@@ -1,0 +1,9 @@
+#!/bin/sh
+exec 2>&1
+# $0 (not BASH_SOURCE, this is /bin/sh); pwd -P resolves the /service/<name> symlink
+# service/log -> service -> installation folder
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P)
+SCRIPT_DIR=$(cd "$SCRIPT_DIR/../.." && pwd -P)
+SERVICE_NAME=$(basename "$SCRIPT_DIR")
+# documentation on how to use multilog https://manpages.debian.org/stretch/daemontools/multilog.8.en.html
+exec multilog t s153600 n2 "/var/log/${SERVICE_NAME}"

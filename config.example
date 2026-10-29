@@ -1,0 +1,42 @@
+[DEFAULT]
+# IP address or host name of the OpenDTU
+Host=192.168.188.88
+
+# Username/Password of the OpenDTU - leave empty if it needs no login
+Username =
+Password =
+
+# Possible log levels: CRITICAL, ERROR, WARNING, INFO, DEBUG. To keep the log small use ERROR
+Logging=ERROR
+
+# Time in minutes how often the power of every inverter is written to the log (log level INFO)
+SignOfLifeLog=1
+
+# Timeout in seconds of one request to the OpenDTU
+HTTPTimeout=2.5
+
+# If the OpenDTU does not answer for this many seconds, all power values are set to 0
+# until it answers again (minimum 15; the OpenDTU is asked every 5 seconds)
+ErrorStateAfterSeconds=60
+
+# 1 = send the yield of today instead of the total yield
+useYieldDay=0
+
+# One section per micro inverter, in the order of the OpenDTU (the 1st inverter is [INVERTER0]).
+# Phase: L1, L2 or L3
+# DeviceInstance: a unique number for every device on the Venus OS
+# AcPosition: 0=AC input 1; 1=AC output; 2=AC input 2
+[INVERTER0]
+Phase=L1
+DeviceInstance=22
+AcPosition=0
+
+[INVERTER1]
+Phase=L2
+DeviceInstance=23
+AcPosition=0
+
+[INVERTER2]
+Phase=L3
+DeviceInstance=24
+AcPosition=0

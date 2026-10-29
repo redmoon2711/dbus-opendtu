@@ -1,0 +1,15 @@
+#!/bin/sh
+# service/run - started by supervise. $0 (not BASH_SOURCE, this is /bin/sh) locates the script;
+# pwd -P resolves the /service/<name> symlink so that ".." is the real installation folder.
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P)
+APP_DIR=$(cd "$SCRIPT_DIR/.." && pwd -P)
+
+exec 2>&1
+
+# print the version into the log
+if [ -f "$APP_DIR/version.txt" ]; then
+    cat "$APP_DIR/version.txt"
+fi
+
+# exec: python replaces the shell, so supervise's signals (svc -t/-d) reach python directly
+exec python "$APP_DIR/dbus_opendtu.py"
